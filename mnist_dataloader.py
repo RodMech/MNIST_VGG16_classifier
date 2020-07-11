@@ -20,11 +20,16 @@ def mnist_dataloader(batch_size_train:int=64, batch_size_test:int=1000) -> Tuple
     _MEAN_MNIST = (0.1307,)
     _STD_MNIST = (0.3081,)
 
+    # TODO: Introduce a new Conv layer to give MNIST input 3 channels. See:
+    # https://discuss.pytorch.org/t/how-to-get-mnist-data-from-torchvision-with-three-channels-for-some-pretrained-model-like-vgg/21872
+
     train_loader = DataLoader(
         torchvision.datasets.MNIST('/files/',
                                    train=True,
                                    download=True,
                                    transform=torchvision.transforms.Compose([
+                                       torchvision.transforms.Resize(size=256),
+                                       torchvision.transforms.Grayscale(3),
                                        torchvision.transforms.ToTensor(),
                                        torchvision.transforms.Normalize(
                                            _MEAN_MNIST, _STD_MNIST)
@@ -37,6 +42,8 @@ def mnist_dataloader(batch_size_train:int=64, batch_size_test:int=1000) -> Tuple
                                    train=False,
                                    download=True,
                                    transform=torchvision.transforms.Compose([
+                                       torchvision.transforms.Resize(size=256),
+                                       torchvision.transforms.Grayscale(3),
                                        torchvision.transforms.ToTensor(),
                                        torchvision.transforms.Normalize(
                                            _MEAN_MNIST, _STD_MNIST)
