@@ -6,13 +6,13 @@ import torchvision
 from torch.utils.data import DataLoader
 
 
-def mnist_dataloader(batch_size_train:int=64, batch_size_test:int=1000) -> Tuple[DataLoader, DataLoader]:
+def mnist_dataloader(batch_size_train:int=64, batch_size_test:int=64) -> Tuple[DataLoader, DataLoader]:
 
     '''
     -Description-
     Load MNIST dataset from source (http://yann.lecun.com/exdb/mnist/)
-    :param batch_size_train:
-    :param batch_size_test:
+    :param batch_size_train: 64 original
+    :param batch_size_test: 1000 original
     :return: tuple: (train_loader,  test_loader)
     '''
 
