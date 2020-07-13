@@ -1,5 +1,6 @@
 from torchvision import models
 import torch.nn as nn
+import torch
 
 
 class Vgg16Mnist:
@@ -36,4 +37,9 @@ class Vgg16Mnist:
     def model(self) -> models.vgg16_bn:
         # Return the model only
         return self.vgg16
+
+    def set_test_mode(self, weight_path: str):
+        self.transfer_learning_prep()
+        self.vgg16.load_state_dict(torch.load(weight_path))
+        self.vgg16.eval()
 
