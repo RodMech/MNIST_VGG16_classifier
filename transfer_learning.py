@@ -50,3 +50,6 @@ def transfer_learning(train_epochs:int=20, early_stop_epochs:int=3, save_file_na
     # For analising loss and accuracy curves
     # history.to_csv("MNIST_VGG16_transfer.csv", sep=",", index=False)
 
+
+if __name__ == '__main__':
+    transfer_learning()
