@@ -124,3 +124,5 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+# Torch generated Weight files
+*.pt
