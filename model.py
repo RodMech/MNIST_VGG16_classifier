@@ -39,7 +39,16 @@ class Vgg16Mnist:
         return self.vgg16
 
     def set_test_mode(self, weight_path: str):
-        self.transfer_learning_prep()
-        self.vgg16.load_state_dict(torch.load(weight_path))
-        self.vgg16.eval()
+        if torch.cuda.is_available():
+            device = "cuda"
+        else:
+            device = "cpu"
 
+        self.transfer_learning_prep()
+        self.vgg16.load_state_dict(torch.load(weight_path, map_location=torch.device(device)))
+
+        if torch.cuda.is_available():
+            self.vgg16.to("cuda")
+
+    def evaluate(self, input):
+        return self.vgg16(input)
