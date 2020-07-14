@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  mnist-vgg16:
+    build:
+      context: ./
+      dockerfile: ./dev-nogpu.dockerfile
+    image: mnist-vgg16:nogpu
+    volumes:
+      - ../:/opt/project
+    command: bash -c "python3 test.py"
+
