@@ -127,5 +127,5 @@ Temporary Items
 # Torch generated Weight files
 *.pt
 
-# Project output folders
-images/
+# Project output png images
+images/*.png
