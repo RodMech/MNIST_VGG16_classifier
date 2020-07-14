@@ -1,6 +1,6 @@
-from model import Vgg16Mnist
-from train import train
-from mnist_dataloader import mnist_dataloader
+from src.model import Vgg16Mnist
+from src.train import train
+from src.mnist_dataloader import mnist_dataloader
 
 from torch import optim
 from torch import nn

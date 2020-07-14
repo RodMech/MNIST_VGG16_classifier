@@ -1,4 +1,4 @@
-from inferencer import Inferencer
+from src.inferencer import Inferencer
 
 if __name__ == '__main__':
     inferencer = Inferencer()

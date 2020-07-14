@@ -1,5 +1,5 @@
-from model import Vgg16Mnist
-from mnist_dataloader import mnist_dataloader
+from src.model import Vgg16Mnist
+from src.mnist_dataloader import mnist_dataloader
 
 import torch
 from torch.utils.data import DataLoader
@@ -19,7 +19,7 @@ class Inferencer:
         self.top_preds = top_preds          # Evaluate the top k predictions
         self._test_on_gpu = torch.cuda.is_available()
         self._test_data = None
-        
+
         if self._test_on_gpu == True:       # CPU: 16, GPU: 64
             self.batch_size = 64
         else:
