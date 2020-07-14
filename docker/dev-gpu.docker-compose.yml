@@ -1,0 +1,21 @@
+version: '2.4'
+
+services:
+  mnist-vgg16:
+    build:
+      context: ./
+      dockerfile: ./dev-gpu.dockerfile
+    image: mnist-vgg16:gpu
+    volumes:
+      - ../:/opt/project
+    working_dir: /opt/project
+    runtime: nvidia
+    shm_size: 4G
+    cpus: 4.0
+    mem_limit: 55G
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      stack: 67108864
+    command: bash -c "python3 test.py"
