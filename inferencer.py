@@ -11,16 +11,18 @@ import time
 class Inferencer:
     def __init__(self,
                  weight_path: str = "./MNIST_VGG16_transfer.pt",
-                 batch_size: int = 16,
                  image_number: int = 0,
                  top_preds: int = 5
                  ):
         self.weight_path = weight_path
-        self.batch_size = batch_size        # CPU: 16, GPU: 64
         self.image_number = image_number    # Select the ith image in the batch for saving graphic output
         self.top_preds = top_preds          # Evaluate the top k predictions
         self._test_on_gpu = torch.cuda.is_available()
         self._test_data = None
+        if self._test_on_gpu == True:       # CPU: 16, GPU: 64
+            self.batch_size = 64
+        else:
+            self.batch_size = 16
 
     def load_test_data(self) -> DataLoader:
         # Import the MNIST data for test
