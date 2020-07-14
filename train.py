@@ -182,7 +182,6 @@ def train(model,
                     # Track improvement
                     epochs_no_improve = 0
                     valid_loss_min = valid_loss
-                    valid_best_acc = valid_acc
                     best_epoch = epoch
 
                 # Otherwise increment count of epochs with no improvement
@@ -198,19 +197,7 @@ def train(model,
                             f'{total_time:.2f} total seconds elapsed. {total_time / (epoch+1):.2f} seconds per epoch.'
                         )
 
-                        # Load the best state dict
-                        model.load_state_dict(torch.load(save_file_name))
-                        # Attach the optimizer
-                        model.optimizer = optimizer
 
-                        # Format history
-                        history = pd.DataFrame(
-                            history,
-                            columns=[
-                                'train_loss', 'valid_loss', 'train_acc',
-                                'valid_acc'
-                            ])
-                        return model, history
 
     # Attach the optimizer
     model.optimizer = optimizer
