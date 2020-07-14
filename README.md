@@ -36,7 +36,7 @@ For training and testing inside the container, a docker-compose file is used. Se
 
 ## Weights and training
 
-Default weights are provided in the following [link](https://drive.google.com/file/d/1VUaJSDC0C7ZzT_eAioyirjhxL1RALtkO/view?usp=sharing). 
+The transfer learning pipeline has already been implemented by me. Find the weights in the following [link](https://drive.google.com/file/d/1VUaJSDC0C7ZzT_eAioyirjhxL1RALtkO/view?usp=sharing). 
 Weights are expected to be placed in the project folder (`MNIST_VGG16_classifier/`).
 
 The transfer learning training output details are the following: 
