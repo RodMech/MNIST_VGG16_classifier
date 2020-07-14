@@ -28,7 +28,7 @@ This version includes two Dockerfiles:
 
 - `dev-nogpu.dockerfile`
 
-- `dev-gpu.dockerfile`: `CUDA 10 // CUDNN 7
+- `dev-gpu.dockerfile`: `CUDA 10 // CUDNN 7`
 
 For training and testing inside the container, a docker-compose file is used. See `how to run` it below.
 
