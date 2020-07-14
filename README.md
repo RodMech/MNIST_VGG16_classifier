@@ -14,7 +14,7 @@ The net is able to work both in GPU and CPU.
 ## Requirements
 
 The required packages have been version-pinned in the `requirements.txt`.
-The only required compatible dependencies are `docker` and `docker-compose` The following specifications have been tested (for experiment repeatability):
+The only required compatible dependencies are `docker` and `docker-compose` The following specifications have been tested (for experiment reproducibility):
 
 `docker==19.03.8`
 
