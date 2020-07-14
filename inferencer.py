@@ -11,15 +11,14 @@ import time
 class Inferencer:
     def __init__(self,
                  weight_path: str = "./MNIST_VGG16_transfer.pt",
-                 batch_size: int = 32,
+                 batch_size: int = 16,
                  image_number: int = 0,
                  top_preds: int = 5
                  ):
         self.weight_path = weight_path
-        self.batch_size = batch_size
-        # Select the ith image in the batch for saving graphic output
-        self.image_number = image_number
-        self.top_preds = top_preds # Evaluate the top k predictions
+        self.batch_size = batch_size        # CPU: 16, GPU: 64
+        self.image_number = image_number    # Select the ith image in the batch for saving graphic output
+        self.top_preds = top_preds          # Evaluate the top k predictions
         self._test_on_gpu = torch.cuda.is_available()
         self._test_data = None
 
@@ -67,9 +66,15 @@ class Inferencer:
                 # Find the topk predictions
                 topk, topclass = eval_proba.topk(self.top_preds, dim=1)
 
-                # Print accuracy
+                # Save a sample of MNIST test to a fodler
+                self.graphic_output(
+                                    tensors_sample=tensors_sample,
+                                    topclass=topclass
+                                    )
+
+                # Print accuracy and bechmarks
                 accuracy = (sum(topclass[:, 0].numpy() == ground_truth) / self.batch_size) * 100
-                print(f"[INFERENCE] {self.batch_size} images analised in {final_time-initial_time} seconds. Accuracy: {accuracy}%")
+                print(f"[CPU INFERENCE] {self.batch_size} images analised in {final_time-initial_time} seconds. Accuracy: {accuracy}%")
 
 
 
