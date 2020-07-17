@@ -51,7 +51,7 @@ There are two options available:
 
 ### Transfer learning stage
 
-If the user wants to train and generate weights, or reproduce the results provided in this repository, you will need to run the code in a GPU. CPU show very poor performance in this stage. 
+If the user wants to train and generate weights, or reproduce the results provided in this repository, you will need to run the code in a GPU. CPU shows very poor performance in this stage. 
 
 The `dev-gpu.docker-compose.yml` file needs to be modified by the user, replacing the last line:
 
